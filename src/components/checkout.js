@@ -51,6 +51,8 @@ const Checkout = class extends React.Component {
   }
 
   openStripeCheckout(event) {
+    console.log('openstripecheckout')
+    console.log(process.env.LAMBDA_ENDPOINT)
     event.preventDefault()
     this.setState({ disabled: true, buttonText: "WAITING..." })
     this.stripeHandler.open({
@@ -58,7 +60,7 @@ const Checkout = class extends React.Component {
       amount: amount,
       description: "A product well worth your time",
       token: token => {
-        fetch(`AWS_LAMBDA_URL`, {
+        fetch(`${process.env.LAMBDA_ENDPOINT}checkout`, {
           method: "POST",
           body: JSON.stringify({
             token,
