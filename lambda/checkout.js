@@ -1455,24 +1455,19 @@ exports.handler = function handler(event, context, callback) {
 
   // -- Parse the body contents into an object.
   const data = JSON.parse(event.body);
-  console.log(data);
 
-  // //-- Make sure we have all required data. Otherwise, escape.
-  // if(
-  //   !data.token ||
-  //   !data.amount ||
-  //   !data.idempotency_key
-  // ) {
+  // -- Make sure we have all required data. Otherwise, escape.
+  if (!data.token || !data.amount || !data.idempotency_key) {
+    console.error('Required information is missing.');
 
-  //   console.error('Required information is missing.');
+    callback(null, {
+      statusCode,
+      headers,
+      body: JSON.stringify({ status: 'missing-information' })
+    });
 
-  //   callback(null, {
-  //     statusCode,
-  //     headers,
-  //     body: JSON.stringify({status: 'missing-information'})
-  //   });
-
-  //   return;
+    return;
+  }
 
   stripe.charges.create({
     currency: 'usd',

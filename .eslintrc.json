@@ -5,5 +5,17 @@
   "env": {
     "browser": true,
     "node": true
+  },
+  "rules": {
+    "prefer-destructuring": [
+      "error",
+      {
+        "array": false,
+        "object": false
+      },
+      {
+        "enforceForRenamedProperties": false
+      }
+    ]
   }
 }
