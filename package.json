@@ -4,20 +4,19 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@moltin/sdk": "^3.12.1",
     "babel-eslint": "^8.2.6",
-    "dotenv": "^6.0.0",
     "gatsby": "^1.9.247",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
+    "gatsby-plugin-react-next": "^1.0.11",
     "gatsby-plugin-stripe-checkout": "^1.0.5",
     "netlify-lambda": "^0.4.0",
     "react-helmet": "^5.2.0",
     "stripe": "^6.3.0",
     "uuid": "^3.3.2"
   },
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": ["gatsby"],
   "license": "MIT",
   "scripts": {
     "lambda-serve": "netlify-lambda serve lambda-src",

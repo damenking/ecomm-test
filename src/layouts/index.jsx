@@ -3,29 +3,43 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 import Header from '../components/header';
+import AuthProvider from '../context/AuthProvider';
+import CartProvider from '../context/CartProvider';
 import './index.css';
 
+import Link from 'gatsby-link';
+
 const Layout = ({ children, data }) => (
-  <div>
-    <Helmet
-      title={data.site.siteMetadata.title}
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
-    />
-    <Header siteTitle={data.site.siteMetadata.title} />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
-      {children()}
-    </div>
-  </div>
+  <AuthProvider>
+    <CartProvider>
+      <Helmet
+        title={data.site.siteMetadata.title}
+        meta={[
+          { name: 'description', content: 'Sample' },
+          { name: 'keywords', content: 'sample, something' },
+        ]}
+      />
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <Link to="/about">
+About
+      </Link>
+      <img
+        src="https://2.bp.blogspot.com/-BMP2l6Hwvp4/TiAxeGx4CTI/AAAAAAAAD_M/XlC_mY3SoEw/s1600/panda-group-eating-bamboo.jpg"
+        alt="Group of pandas eating bamboo"
+      />
+
+      <div
+        style={{
+          margin: '0 auto',
+          maxWidth: 960,
+          padding: '0px 1.0875rem 1.45rem',
+          paddingTop: 0,
+        }}
+      >
+        {children()}
+      </div>
+    </CartProvider>
+  </AuthProvider>
 );
 
 Layout.propTypes = {

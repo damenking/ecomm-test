@@ -1,5 +1,6 @@
 import React from 'react';
 import uuid from 'uuid';
+import { GetCollections } from '../moltin';
 
 // hardcoded amount (in US cents) to charge users
 // you could set this variable dynamically to charge different amounts
@@ -87,6 +88,8 @@ const Checkout = class extends React.Component {
   }
 
   render() {
+    const collections = GetCollections();
+    console.log(collections);
     return (
       <div style={cardStyles}>
         <h4>
